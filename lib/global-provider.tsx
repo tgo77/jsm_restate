@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext } from "react";
-import { getUser } from "./appwrite";
+import { getCurrentUser } from "./appwrite";
 import { useAppwrite } from "./use-appwrite";
 
 interface User{
@@ -25,8 +25,7 @@ export const GlobalProvider = ({children}:{children:ReactNode}) =>{
         loading,
         refetch,
     } = useAppwrite({
-        fn: getUser,
-
+        fn: getCurrentUser,
     });
     const isLoggedin = !!user;
     console.log(JSON.stringify(user, null,2))

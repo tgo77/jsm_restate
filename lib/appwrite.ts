@@ -6,6 +6,8 @@ export const config = {
     platform: "com.tgo.restate",
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+    apiKey: process.env.EXPO_PUBLIC_APPWRITE_APP_KEY,
+    devKey: process.env.EXPO_PUBLIC_APPWRITE_DEV_KEY,
 };
 
 export const client = new Client();
@@ -15,7 +17,7 @@ client
 
 export const avatar = new Avatars(client);
 export const account = new Account(client);
-console.log(account);
+
 
 export const login = async() =>{
     try {
@@ -64,7 +66,7 @@ export const logout = async() =>{
     }
 };
 
-export const getUser = async() =>{
+export const getCurrentUser = async() =>{
     try {
         const response = await account.get();
         if(response.$id){
